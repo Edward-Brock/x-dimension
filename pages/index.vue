@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <div>Index</div>
+  <UContainer class="my-5">
+    Index
+  </UContainer>
 </template>
 
 <style scoped>
