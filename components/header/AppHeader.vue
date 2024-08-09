@@ -33,6 +33,7 @@ const status = ref('false')
               color="gray"
               variant="solid"
               :ui="{ rounded: 'rounded-full' }"
+              to="/signup"
             >
               注册
             </UButton>
@@ -42,6 +43,7 @@ const status = ref('false')
               size="md"
               variant="solid"
               :ui="{ rounded: 'rounded-full' }"
+              to="/login"
             >
               <template #trailing>
                 <UIcon

@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@headlessui/vue':
+        specifier: ^1.7.22
+        version: 1.7.22(vue@3.4.36(typescript@5.5.4))
+      '@heroicons/vue':
+        specifier: ^2.1.5
+        version: 2.1.5(vue@3.4.36(typescript@5.5.4))
       '@nuxt/eslint':
         specifier: ^0.5.0
         version: 0.5.0(eslint@8.57.0)(magicast@0.3.4)(rollup@4.20.0)(typescript@5.5.4)(vite@5.3.5(@types/node@22.1.0)(terser@5.31.4))
@@ -20,6 +26,13 @@ importers:
       vue:
         specifier: latest
         version: 3.4.36(typescript@5.5.4)
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@iconify-json/heroicons':
+        specifier: ^1.1.24
+        version: 1.1.24
 
 packages:
 
@@ -684,6 +697,11 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       vue: ^3.2.0
+
+  '@heroicons/vue@2.1.5':
+    resolution: {integrity: sha512-IpqR72sFqFs55kyKfFS7tN+Ww6odFNeH/7UxycIOrlVYfj4WUGAdzQtLBnJspucSeqWFQsKM0g0YrgU655BEfA==}
+    peerDependencies:
+      vue: '>= 3'
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4400,6 +4418,9 @@ packages:
     resolution: {integrity: sha512-zK7YHHz4ZXpW89AHXUPbQVGKI7uvkd3hzusTdotCg1UxyaVtg0zFJSTfW/Dq5f7OBBVnq6cZIaC8Ti4hb6dtCA==}
     engines: {node: '>= 14'}
 
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -4928,6 +4949,10 @@ snapshots:
   '@headlessui/vue@1.7.22(vue@3.4.36(typescript@5.5.4))':
     dependencies:
       '@tanstack/vue-virtual': 3.8.5(vue@3.4.36(typescript@5.5.4))
+      vue: 3.4.36(typescript@5.5.4)
+
+  '@heroicons/vue@2.1.5(vue@3.4.36(typescript@5.5.4))':
+    dependencies:
       vue: 3.4.36(typescript@5.5.4)
 
   '@humanwhocodes/config-array@0.11.14':
@@ -9253,3 +9278,5 @@ snapshots:
       archiver-utils: 5.0.2
       compress-commons: 6.0.2
       readable-stream: 4.5.2
+
+  zod@3.23.8: {}
