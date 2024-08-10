@@ -14,7 +14,6 @@ definePageMeta({
 
 const schema = z.object({
   username: z.string({ required_error: '需要用户名' })
-    .min(1, { message: '必须至少包含1个字符' })
     .max(32, { message: '不能超过32个字符' })
     .regex(/^[a-zA-Z0-9_]+$/, { message: '只能包含字母、数字和下划线' }),
   password: z.string({ required_error: '需要密码' })
