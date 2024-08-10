@@ -20,12 +20,16 @@
     "@nuxt/ui": "^2.18.4",
     "@prisma/nuxt": "^0.0.35",
     "@sidebase/nuxt-auth": "^0.8.2",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.12.4",
     "vue": "latest",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.1.24",
-    "@prisma/client": "^5.18.0"
+    "@prisma/client": "^5.18.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6"
   }
 }
