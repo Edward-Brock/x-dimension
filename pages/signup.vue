@@ -2,6 +2,8 @@
 import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
+const { signUp } = useAuth()
+
 useHead({
   titleTemplate: (titleChunk) => {
     return titleChunk ? `注册 - ${titleChunk}` : '注册'
@@ -36,10 +38,10 @@ const state = reactive({
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   try {
     const credentials = { nickname: event.data.nickname, username: event.data.username, password: event.data.password }
-    console.log(credentials)
+    await signUp(credentials, { callbackUrl: '/login', redirect: true })
   }
   catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 </script>
