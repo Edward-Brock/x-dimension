@@ -1,10 +1,16 @@
 <script setup lang="ts">
-
+const { status, data } = useAuth()
 </script>
 
 <template>
   <UContainer class="my-5">
-    Index
+    <div>You are currently {{ status }}.</div>
+    <div v-if="data">
+      Hello {{ data.nickname }}!
+    </div>
+    <div v-else>
+      You are not logged in.
+    </div>
   </UContainer>
 </template>
 

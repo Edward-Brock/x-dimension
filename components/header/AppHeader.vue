@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { BellIcon } from '@heroicons/vue/24/outline'
+import { Disclosure } from '@headlessui/vue'
 
 const { status } = useAuth()
 </script>
@@ -57,7 +56,7 @@ const { status } = useAuth()
 
           <!-- 个人信息 -->
           <div
-            v-else
+            v-else-if="status==='authenticated'"
             class="flex items-center"
           >
             <!-- Profile dropdown -->
