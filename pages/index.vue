@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { status, data } = useAuth()
+const { status, data, refresh } = useAuth()
 </script>
 
 <template>
@@ -11,6 +11,10 @@ const { status, data } = useAuth()
     <div v-else>
       You are not logged in.
     </div>
+
+    <button @click="() => refresh()">
+      Refresh
+    </button>
   </UContainer>
 </template>
 

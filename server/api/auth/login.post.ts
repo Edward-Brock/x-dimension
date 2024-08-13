@@ -56,18 +56,18 @@ export default defineEventHandler(async (event) => {
   // 短期 Token
   const accessToken = jwt.sign({
     iss: cookieDomain,
-    sub: userFromDb.id, // 用户 ID
+    sub: userFromDb.id,
     iat: currentTime,
     ...user,
-  }, SECRET, { expiresIn: useRuntimeConfig().authAccessExpiresIn })
+  }, SECRET, { expiresIn: 60 * 10 })
 
   // 长期 Token
   const refreshToken = jwt.sign({
     iss: cookieDomain,
-    sub: userFromDb.id, // 用户 ID
+    sub: userFromDb.id,
     iat: currentTime,
     ...user,
-  }, SECRET, { expiresIn: useRuntimeConfig().authRefreshExpiresIn })
+  }, SECRET, { expiresIn: 60 * 60 * 24 })
 
   return {
     token: {

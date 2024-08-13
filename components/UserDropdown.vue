@@ -12,7 +12,7 @@ const items = [
   }], [{
     label: '设置',
     icon: 'i-heroicons-cog-8-tooth',
-    disabled: true,
+    to: '/setting',
   }, {
     label: 'GitHub 仓库',
     icon: 'i-mdi-github',
@@ -48,7 +48,7 @@ const items = [
       <template #leading>
         <UAvatar
           src="https://avatars.githubusercontent.com/u/739984?v=4"
-          size="sm"
+          size="xs"
         />
       </template>
     </UButton>

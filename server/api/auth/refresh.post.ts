@@ -69,14 +69,14 @@ export default eventHandler(async (event) => {
       sub: userFromDb.id,
       iat: currentTime,
       ...user,
-    }, SECRET, { expiresIn: useRuntimeConfig().authAccessExpiresIn })
+    }, SECRET, { expiresIn: 60 * 10 })
 
     const newRefreshToken = jwt.sign({
       iss: cookieDomain,
       sub: userFromDb.id,
       iat: currentTime,
       ...user,
-    }, SECRET, { expiresIn: useRuntimeConfig().authRefreshExpiresIn })
+    }, SECRET, { expiresIn: 60 * 60 * 24 })
 
     return {
       token: {

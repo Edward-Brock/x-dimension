@@ -12,11 +12,13 @@ const { status } = useAuth()
       <div class="relative flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <img
-              class="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=500"
-              alt="Your Company"
-            >
+            <ULink to="/">
+              <img
+                class="h-8 w-auto"
+                src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=500"
+                alt="X Dimension"
+              >
+            </ULink>
           </div>
         </div>
 

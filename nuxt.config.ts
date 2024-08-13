@@ -5,8 +5,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     authSecret: process.env.AUTH_SECRET, // 项目 Secret
     cookieDomain: process.env.COOKIE_DOMAIN, // JWT 签发者
-    authAccessExpiresIn: process.env.AUTH_ACCESS_EXPIRES_IN, // Access Token 过期时间
-    authRefreshExpiresIn: process.env.AUTH_REFRESH_EXPIRES_IN, // Refresh Token 过期时间
     public: {
       projectName: process.env.NUXT_PROJECT_NAME, // 项目简称
       projectFullName: process.env.NUXT_PROJECT_FULL_NAME, // 项目全程
@@ -40,7 +38,8 @@ export default defineNuxtConfig({
       },
       token: {
         signInResponseTokenPointer: '/token/accessToken',
-        maxAgeInSeconds: process.env.AUTH_MAX_AGE_IN_SECONDS as number | undefined,
+        maxAgeInSeconds: 60 * 10,
+        sameSiteAttribute: 'lax'
       },
       refreshToken: {
         signInResponseRefreshTokenPointer: '/token/refreshToken',
