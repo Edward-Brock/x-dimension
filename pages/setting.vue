@@ -1,11 +1,18 @@
 <script setup lang="ts">
-
+const links = [{
+  label: '通用',
+  icon: 'i-heroicons-user-circle',
+  to: '/setting',
+}, {
+  label: '密码',
+  icon: 'i-heroicons-lock-closed',
+}]
 </script>
 
 <template>
-  <div>
+  <main>
     <header
-      class="h-16 bg-background/75 backdrop-blur border-b -mb-px border-gray-200 flex items-center dark:border-gray-800"
+      class="h-14 border-b -mb-px border-gray-200 flex items-center dark:border-gray-800"
     >
       <UContainer class="flex items-center justify-between flex-1 gap-x-1.5 min-w-0">
         <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-200">
@@ -14,12 +21,23 @@
       </UContainer>
     </header>
 
-    <main>
-      <UContainer class="py-6">
-        设置内容
-      </UContainer>
-    </main>
-  </div>
+    <nav>
+      <header
+        class="h-12 border-b -mb-px border-gray-200 flex items-center dark:border-gray-800"
+      >
+        <UContainer class="flex items-center justify-between flex-1 gap-x-1.5 min-w-0">
+          <div class="tracking-tight text-gray-900 dark:text-gray-200">
+            <UHorizontalNavigation
+              :links="links"
+              class="border-b border-gray-200 dark:border-gray-800"
+            />
+          </div>
+        </UContainer>
+      </header>
+    </nav>
+
+    <NuxtPage />
+  </main>
 </template>
 
 <style scoped>

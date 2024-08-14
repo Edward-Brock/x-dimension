@@ -20,7 +20,8 @@ export default defineEventHandler(async (event) => {
 
   // 通过用户名查找用户及所属角色信息
   const userFromDb = await prisma.user.findUnique({
-    where: { username }, include: {
+    where: { username },
+    include: {
       roles: {
         include: {
           Role: true,
@@ -59,7 +60,9 @@ export default defineEventHandler(async (event) => {
     sub: userFromDb.id,
     iat: currentTime,
     ...user,
-  }, SECRET, { expiresIn: 60 * 10 })
+  }, SECRET, {
+    expiresIn: 30
+  })
 
   // 长期 Token
   const refreshToken = jwt.sign({
@@ -67,7 +70,9 @@ export default defineEventHandler(async (event) => {
     sub: userFromDb.id,
     iat: currentTime,
     ...user,
-  }, SECRET, { expiresIn: 60 * 60 * 24 })
+  }, SECRET, {
+    expiresIn: 60 * 60 * 24
+  })
 
   return {
     token: {
