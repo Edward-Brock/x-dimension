@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const { status, data, refresh } = useAuth()
+
+definePageMeta({
+  auth: false,
+})
 </script>
 
 <template>

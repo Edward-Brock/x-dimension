@@ -36,6 +36,9 @@ export default defineNuxtConfig({
         getSession: { path: '/user', method: 'get' },
         refresh: { path: '/refresh', method: 'post' }
       },
+      pages: {
+        login: '/login'
+      },
       token: {
         signInResponseTokenPointer: '/token/accessToken',
         maxAgeInSeconds: 60 * 10,
@@ -45,6 +48,7 @@ export default defineNuxtConfig({
         signInResponseRefreshTokenPointer: '/token/refreshToken',
         refreshRequestTokenPointer: '/refreshToken',
       }
-    }
+    },
+    globalAppMiddleware: true
   }
 })
