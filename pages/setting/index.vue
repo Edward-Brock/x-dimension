@@ -18,21 +18,17 @@ const schema = z.object({
       .max(80, { message: '不能超过80个字符' }),
   email: z.string()
       .email('请输入有效的电子邮箱地址')
-      .optional()
-      .nullable()
-      .or(z.literal('')),
+      .optional(),
   mobile: z.string()
       .length(11, { message: "需要11位电话号码" })
       .startsWith("1", { message: "请输入正确的手机号码" })
-      .optional()
-      .nullable()
-      .or(z.literal('')),
+      .optional(),
 })
 
-const { token } = useAuthState()
+const { data, token } = useAuthState()
 
 // 初始化用户数据
-const { data } = await useFetch<UserData>('/api/auth/user', {
+const { data: initialData } = await useFetch<UserData>('/api/auth/user', {
   query: { type: 'info' },
   headers: {
     Authorization: `${ token.value }`
@@ -41,11 +37,11 @@ const { data } = await useFetch<UserData>('/api/auth/user', {
 
 // 反应式的 state 对象
 const state = reactive<UserData>({
-  username: data.value?.username || '',
-  nickname: data.value?.nickname || '',
-  email: data.value?.email || '',
-  mobile: data.value?.mobile || '',
-  gender: data.value?.gender || 'Unknown',
+  username: initialData.value?.username || '',
+  nickname: initialData.value?.nickname || '',
+  email: initialData.value?.email || undefined,
+  mobile: initialData.value?.mobile || undefined,
+  gender: initialData.value?.gender || 'Unknown',
 })
 
 // 性别选项
@@ -85,6 +81,15 @@ async function onSubmit(event: FormSubmitEvent<UserData>) {
 
   if (Object.keys(changedData).length > 0) {
     console.log('提交的更改数据:', changedData)
+    const response = await useFetch(`/api/user/${data.value.sub}`, {
+      method: 'PATCH',
+      body: changedData,
+      headers: {
+        Authorization: `${token.value}`
+      }
+    })
+
+    console.log(response)
   } else {
     console.log('没有任何更改，不需要提交')
   }
