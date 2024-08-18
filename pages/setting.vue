@@ -1,4 +1,10 @@
 <script setup lang="ts">
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `设置 - ${titleChunk}` : '设置'
+  },
+})
+
 const links = [{
   label: '通用',
   icon: 'i-heroicons-user-circle',

@@ -26,6 +26,7 @@ const schema = z.object({
 })
 
 const { data, token } = useAuthState()
+const { refresh } = useAuth()
 
 // 初始化用户数据
 const { data: initialData } = await useFetch<UserData>('/api/auth/user', {
@@ -81,15 +82,16 @@ async function onSubmit(event: FormSubmitEvent<UserData>) {
 
   if (Object.keys(changedData).length > 0) {
     console.log('提交的更改数据:', changedData)
-    const response = await useFetch(`/api/user/${data.value.sub}`, {
+    const response = await useFetch(`/api/user/${ data.value.sub }`, {
       method: 'PATCH',
       body: changedData,
       headers: {
-        Authorization: `${token.value}`
+        Authorization: `${ token.value }`
       }
     })
 
     console.log(response)
+    await refresh()
   } else {
     console.log('没有任何更改，不需要提交')
   }
