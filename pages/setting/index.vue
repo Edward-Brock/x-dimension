@@ -25,16 +25,18 @@ const schema = z.object({
       .optional(),
 })
 
-const { data, token } = useAuthState()
+const { data, rawToken } = useAuthState()
 const { refresh } = useAuth()
 
-// 初始化用户数据
-const { data: initialData } = await useFetch<UserData>('/api/auth/user', {
-  query: { type: 'info' },
-  headers: {
-    Authorization: `${ token.value }`
-  },
-})
+// 使用 useAsyncData 获取用户初始数据
+const { data: initialData } = await useAsyncData<UserData>('user-data', () =>
+    $fetch('/api/auth/user', {
+      headers: {
+        Authorization: `Bearer ${ rawToken.value }`,
+      },
+      query: { type: 'info' }
+    })
+)
 
 // 反应式的 state 对象
 const state = reactive<UserData>({
@@ -67,13 +69,14 @@ async function onSubmit(event: FormSubmitEvent<UserData>) {
   const validatedState: Partial<UserData> = {
     ...state,
     email: state.email?.trim() || undefined,
-    mobile: state.mobile?.trim() || undefined
+    mobile: state.mobile?.trim() || undefined,
+    gender: state.gender
   }
 
   // 找出更改的部分并排除 undefined
   for (const key in validatedState) {
     const newValue = validatedState[key as keyof UserData]
-    const originalValue = data.value?.[key as keyof UserData]
+    const originalValue = initialData.value?.[key as keyof UserData]
 
     if (newValue !== originalValue && newValue !== undefined) {
       changedData[key as keyof UserData] = newValue
@@ -82,16 +85,22 @@ async function onSubmit(event: FormSubmitEvent<UserData>) {
 
   if (Object.keys(changedData).length > 0) {
     console.log('提交的更改数据:', changedData)
-    const response = await useFetch(`/api/user/${ data.value.sub }`, {
+    const response = await fetch(`/api/user/${ data.value.sub }`, {
       method: 'PATCH',
-      body: changedData,
       headers: {
-        Authorization: `${ token.value }`
-      }
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${ rawToken.value }`,
+      },
+      body: JSON.stringify(changedData)
     })
 
-    console.log(response)
-    await refresh()
+    if (response.ok) {
+      const result = await response.json()
+      console.log('更新成功:', result)
+      await refresh()
+    } else {
+      console.error('更新失败:', await response.json())
+    }
   } else {
     console.log('没有任何更改，不需要提交')
   }
