@@ -11,6 +11,12 @@ interface UserData {
   gender: string;
 }
 
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `通用 - ${titleChunk}` : '通用'
+  },
+})
+
 // 定义表单验证规则
 const schema = z.object({
   nickname: z.string({ required_error: '需要昵称' })

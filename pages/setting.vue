@@ -9,9 +9,11 @@ const links = [{
   label: '通用',
   icon: 'i-heroicons-user-circle',
   to: '/setting',
+  exact: true,
 }, {
   label: '密码',
   icon: 'i-heroicons-lock-closed',
+  to: '/setting/password',
 }]
 </script>
 
