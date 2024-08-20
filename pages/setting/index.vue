@@ -115,7 +115,7 @@ async function onSubmit(event: FormSubmitEvent<UserData>) {
 
 <template>
   <u-container class="my-5">
-    <div class="flex-1 flex flex-col overflow-y-auto pb-24">
+    <div class="flex-1 flex flex-col pb-24">
       <UForm
           :schema="schema"
           :state="state"
@@ -123,7 +123,7 @@ async function onSubmit(event: FormSubmitEvent<UserData>) {
       >
         <UFormGroup
             name="submit"
-            class="px-4 flex flex-wrap items-center justify-between gap-4 pb-6 border-b -mb-px border-gray-200 dark:border-gray-800">
+            class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b -mb-px border-gray-200 dark:border-gray-800">
           <template #label>
             <p class="text-lg text-gray-900 dark:text-white font-semibold">个人信息</p>
           </template>

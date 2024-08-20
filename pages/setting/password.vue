@@ -69,7 +69,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
 <template>
   <u-container class="my-5">
-    <div class="px-4 flex-1 flex flex-col overflow-y-auto pb-24">
+    <div class="flex-1 flex flex-col pb-24">
       <UForm
           :schema="schema"
           :state="state"
