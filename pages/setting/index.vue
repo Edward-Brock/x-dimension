@@ -13,7 +13,7 @@ interface UserData {
 
 useHead({
   titleTemplate: (titleChunk) => {
-    return titleChunk ? `通用 - ${titleChunk}` : '通用'
+    return titleChunk ? `通用 - ${ titleChunk }` : '通用'
   },
 })
 
@@ -115,21 +115,28 @@ async function onSubmit(event: FormSubmitEvent<UserData>) {
 
 <template>
   <u-container class="my-5">
-    <div class="px-4 flex-1 flex flex-col overflow-y-auto pb-24">
+    <div class="flex-1 flex flex-col overflow-y-auto pb-24">
       <UForm
           :schema="schema"
           :state="state"
-          class="space-y-4"
           @submit="onSubmit"
       >
         <UFormGroup
             name="submit"
-            label="个人信息"
-            description="这些信息部分将公开显示，请小心您分享的内容"
-            class="flex flex-wrap items-center justify-between gap-4">
-          <UButton size="md" type="submit">
-            保存更改
-          </UButton>
+            class="px-4 flex flex-wrap items-center justify-between gap-4 pb-6 border-b -mb-px border-gray-200 dark:border-gray-800">
+          <template #label>
+            <p class="text-lg text-gray-900 dark:text-white font-semibold">个人信息</p>
+          </template>
+
+          <template #description class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            这些信息部分将公开显示，请小心您分享的内容
+          </template>
+
+          <template #default>
+            <UButton size="md" type="submit">
+              保存更改
+            </UButton>
+          </template>
         </UFormGroup>
 
         <div
