@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import prisma from "~/lib/prisma";
+import prisma from '~/lib/prisma'
 
 const SECRET = useRuntimeConfig().authSecret
 
@@ -61,7 +61,7 @@ export default defineEventHandler(async (event) => {
     iat: currentTime,
     ...user,
   }, SECRET, {
-    expiresIn: 30
+    expiresIn: 30,
   })
 
   // 长期 Token
@@ -71,7 +71,7 @@ export default defineEventHandler(async (event) => {
     iat: currentTime,
     ...user,
   }, SECRET, {
-    expiresIn: 60 * 60 * 24
+    expiresIn: 60 * 60 * 24,
   })
 
   return {

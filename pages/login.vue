@@ -3,6 +3,7 @@ import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
 const { signIn } = useAuth()
+const toast = useToast()
 
 useHead({
   titleTemplate: (titleChunk) => {
@@ -12,6 +13,7 @@ useHead({
 
 definePageMeta({
   layout: 'single',
+  auth: false,
 })
 
 const schema = z.object({
@@ -33,10 +35,28 @@ const state = reactive({
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   try {
     const credentials = { username: event.data.username, password: event.data.password }
-    await signIn(credentials, { callbackUrl: '/', redirect: true })
+    await signIn(credentials, { callbackUrl: '/' })
+    toast.add({
+      icon: 'i-heroicons-check-circle',
+      id: 'login_success',
+      title: '登录成功',
+      description: '欢迎回来',
+    })
   }
-  catch (error) {
-    console.error(error)
+  catch (error: any) {
+    if (error.response) {
+      // 获取并显示后端返回的具体错误信息
+      toast.add({
+        icon: 'i-heroicons-x-circle',
+        id: 'login_error',
+        color: 'red',
+        title: '登录失败',
+        description: error.response._data?.message || '发生了未知错误',
+      })
+    }
+    else {
+      console.error(error)
+    }
   }
 }
 </script>

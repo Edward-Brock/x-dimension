@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import bcrypt from 'bcrypt'
-import prisma from "~/lib/prisma";
+import prisma from '~/lib/prisma'
 
 // 缓存默认角色 ID
 let defaultRoleId: string
@@ -14,7 +14,8 @@ async function getDefaultRoleId() {
     if (defaultRole) {
       // 将 User ID 缓存
       defaultRoleId = defaultRole.id
-    } else {
+    }
+    else {
       throw createError({ statusCode: 400, statusMessage: '默认角色未定义' })
     }
   }

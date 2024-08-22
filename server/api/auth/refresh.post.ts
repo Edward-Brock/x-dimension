@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import prisma from "~/lib/prisma";
+import prisma from '~/lib/prisma'
 
 const SECRET = useRuntimeConfig().authSecret
 
@@ -69,7 +69,7 @@ export default eventHandler(async (event) => {
     iat: currentTime,
     ...user,
   }, SECRET, {
-    expiresIn: 60 * 10
+    expiresIn: 60 * 10,
   })
 
   const refreshToken = jwt.sign({
@@ -78,7 +78,7 @@ export default eventHandler(async (event) => {
     iat: currentTime,
     ...user,
   }, SECRET, {
-    expiresIn: 60 * 60 * 24
+    expiresIn: 60 * 60 * 24,
   })
 
   return {

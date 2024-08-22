@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss'
 
-export default {
+export default <Partial<Config>> {
   content: [
     './components/**/*.{js,vue,ts}',
     './layouts/**/*.vue',

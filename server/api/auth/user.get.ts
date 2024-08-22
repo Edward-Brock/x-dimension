@@ -1,7 +1,7 @@
 import type { H3Event } from 'h3'
 import { createError, eventHandler, getRequestHeader } from 'h3'
 import jwt from 'jsonwebtoken'
-import prisma from "~/lib/prisma";
+import prisma from '~/lib/prisma'
 
 interface User {
   username: string
@@ -21,7 +21,7 @@ const SECRET = useRuntimeConfig().authSecret
 const TOKEN_TYPE = 'Bearer'
 
 const extractToken = (authHeaderValue: string) => {
-  const parts = authHeaderValue.split(`${ TOKEN_TYPE } `)
+  const parts = authHeaderValue.split(`${TOKEN_TYPE} `)
   if (parts.length !== 2) {
     throw createError({ statusCode: 403, statusMessage: '无效的授权头' })
   }
@@ -41,7 +41,8 @@ const ensureAuth = (event: H3Event) => {
   catch (error: any) {
     if (error.name === 'TokenExpiredError') {
       throw createError({ statusCode: 401, statusMessage: '访问令牌已过期，请刷新令牌' })
-    } else {
+    }
+    else {
       console.error('登录失败，错误信息：', error)
       throw createError({ statusCode: 403, statusMessage: '必须登录才能使用此端点' })
     }
@@ -72,10 +73,10 @@ const getUserInfo = async (id: string) => {
  */
 function exclude<User, Key extends keyof User>(
   user: any,
-  keys: any[]
+  keys: any[],
 ): Omit<User, Key> {
-  const entries = Object.entries(user).filter(([key]) => !keys.includes(key as Key));
-  return Object.fromEntries(entries) as Omit<User, Key>;
+  const entries = Object.entries(user).filter(([key]) => !keys.includes(key as Key))
+  return Object.fromEntries(entries) as Omit<User, Key>
 }
 
 export default eventHandler(async (event) => {
@@ -85,7 +86,7 @@ export default eventHandler(async (event) => {
   const authInfo = ensureAuth(event) as JwtPayload
 
   switch (queryType) {
-    // 返回用户 token 解密信息
+  // 返回用户 token 解密信息
     case 'token':
       return authInfo
     // 返回用户完整个人信息

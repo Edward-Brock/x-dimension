@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const projectName = useRuntimeConfig().public.projectName as string
-const projectDescription = useRuntimeConfig().public.projectDescription as string
+const projectName = useRuntimeConfig().public.projectName
+const projectDescription = useRuntimeConfig().public.projectDescription
 
 useSeoMeta({
   title: projectName,
@@ -15,4 +15,6 @@ useSeoMeta({
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+
+  <UNotifications />
 </template>

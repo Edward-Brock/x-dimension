@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import prisma from "~/lib/prisma"
+import prisma from '~/lib/prisma'
 
 const updateUserSchema = z.object({
   nickname: z.string().max(80).optional(),
@@ -8,7 +8,7 @@ const updateUserSchema = z.object({
   avatarUrl: z.string().url().optional(),
   gender: z.enum(['Male', 'Female', 'Other', 'Unknown']).optional(),
   status: z.enum(['Active', 'Banned', 'Locked', 'Inactive']).optional(),
-  remark: z.string().optional()
+  remark: z.string().optional(),
 })
 
 export default defineEventHandler(async (event) => {
@@ -28,12 +28,12 @@ export default defineEventHandler(async (event) => {
   try {
     const updatedUser = await prisma.user.update({
       where: { id: userId },
-      data: parsedBody.data
+      data: parsedBody.data,
     })
 
     return {
       status: 'success',
-      data: updatedUser
+      data: updatedUser,
     }
   }
   catch (error) {
