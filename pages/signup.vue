@@ -45,7 +45,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     await signUp(credentials, { callbackUrl: '/', redirect: true })
     toast.add({
       icon: 'i-heroicons-check-circle',
-      id: 'login_success',
+      id: 'signup_success',
       title: '注册成功',
       description: `欢迎使用 ${projectName}`,
     })
@@ -55,7 +55,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       // 获取并显示后端返回的具体错误信息
       toast.add({
         icon: 'i-heroicons-x-circle',
-        id: 'login_error',
+        id: 'signup_error',
         color: 'red',
         title: '注册失败',
         description: error.response._data?.message || '发生了未知错误',

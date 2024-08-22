@@ -30,6 +30,7 @@ const schema = z.object({
 })
 
 const { data } = useAuthState()
+const toast = useToast()
 
 type Schema = z.output<typeof schema>
 
@@ -52,10 +53,27 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
     // 处理响应
     console.log('密码更新成功:', response)
+    toast.add({
+      icon: 'i-heroicons-check-circle',
+      id: 'password_reset_success',
+      title: '更改成功',
+      description: '密码更改成功',
+    })
   }
-  catch (error) {
-    // 处理错误
-    console.error('密码更新失败:', error)
+  catch (error: any) {
+    if (error.response) {
+      // 获取并显示后端返回的具体错误信息
+      toast.add({
+        icon: 'i-heroicons-x-circle',
+        id: 'password_reset_error',
+        color: 'red',
+        title: '更改失败',
+        description: error.response._data?.message || '发生了未知错误',
+      })
+    }
+    else {
+      console.error(error)
+    }
   }
 }
 </script>
