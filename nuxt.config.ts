@@ -14,14 +14,14 @@ export default defineNuxtConfig({
       projectLicenseUrl: process.env.NUXT_PROJECT_LICENSE_URL, // 项目许可证地址
     },
   },
-  modules: ["@nuxt/ui", "@nuxt/eslint", "@prisma/nuxt", "@sidebase/nuxt-auth"],
+  modules: ['@nuxt/ui', '@nuxt/eslint', '@prisma/nuxt', '@sidebase/nuxt-auth'],
   eslint: {
     config: {
-      stylistic: true
-    }
+      stylistic: true,
+    },
   },
   prisma: {
-    autoSetupPrisma: true
+    autoSetupPrisma: true,
   },
   auth: {
     isEnabled: true,
@@ -34,21 +34,21 @@ export default defineNuxtConfig({
         signOut: { path: '/logout', method: 'post' },
         signUp: { path: '/register', method: 'post' },
         getSession: { path: '/user', method: 'get' },
-        refresh: { path: '/refresh', method: 'post' }
+        refresh: { path: '/refresh', method: 'post' },
       },
       pages: {
-        login: '/login'
+        login: '/login',
       },
       token: {
         signInResponseTokenPointer: '/token/accessToken',
         maxAgeInSeconds: 60 * 10,
-        sameSiteAttribute: 'lax'
+        sameSiteAttribute: 'lax',
       },
       refreshToken: {
         signInResponseRefreshTokenPointer: '/token/refreshToken',
         refreshRequestTokenPointer: '/refreshToken',
-      }
+      },
     },
-    globalAppMiddleware: true
-  }
+    globalAppMiddleware: true,
+  },
 })
