@@ -28,25 +28,29 @@ export default defineNuxtConfig({
     disableServerSideAuth: false,
     baseURL: '/api/auth',
     provider: {
-      type: 'refresh',
+      type: 'local',
       endpoints: {
         signIn: { path: '/login', method: 'post' },
         signOut: { path: '/logout', method: 'post' },
         signUp: { path: '/register', method: 'post' },
         getSession: { path: '/user', method: 'get' },
-        refresh: { path: '/refresh', method: 'post' },
-      },
-      pages: {
-        login: '/login',
       },
       token: {
         signInResponseTokenPointer: '/token/accessToken',
         maxAgeInSeconds: 60 * 10,
         sameSiteAttribute: 'lax',
       },
-      refreshToken: {
-        signInResponseRefreshTokenPointer: '/token/refreshToken',
-        refreshRequestTokenPointer: '/refreshToken',
+      refresh: {
+        isEnabled: true,
+        endpoint: { path: '/refresh', method: 'post' },
+        refreshOnlyToken: true,
+        token: {
+          signInResponseRefreshTokenPointer: '/token/refreshToken',
+          maxAgeInSeconds: 60 * 60 * 24,
+        },
+      },
+      pages: {
+        login: '/login',
       },
     },
     globalAppMiddleware: true,

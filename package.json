@@ -19,7 +19,7 @@
     "@nuxt/eslint": "^0.5.1",
     "@nuxt/ui": "^2.18.4",
     "@prisma/nuxt": "^0.0.35",
-    "@sidebase/nuxt-auth": "^0.8.2",
+    "@sidebase/nuxt-auth": "^0.9.1",
     "bcrypt": "^5.1.1",
     "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.13.0",
