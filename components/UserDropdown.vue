@@ -12,11 +12,17 @@ const items = [
   }], [{
     label: '设置',
     icon: 'i-heroicons-cog-8-tooth',
-    to: '/setting',
+    click: async () => {
+      await navigateTo({ path: '/setting' })
+    },
   }, {
     label: 'GitHub 仓库',
     icon: 'i-mdi-github',
-    to: projectRepositoryUrl,
+    click: async () => {
+      await navigateTo(projectRepositoryUrl, {
+        external: true,
+      })
+    },
   }], [{
     label: '退出账号',
     icon: 'i-heroicons-arrow-right-on-rectangle',
