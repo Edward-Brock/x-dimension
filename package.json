@@ -21,6 +21,7 @@
     "@prisma/nuxt": "^0.0.35",
     "@sidebase/nuxt-auth": "^0.9.1",
     "bcrypt": "^5.1.1",
+    "cos-js-sdk-v5": "^1.8.4",
     "jsonwebtoken": "^9.0.2",
     "nuxt": "^3.13.0",
     "vue": "latest",
