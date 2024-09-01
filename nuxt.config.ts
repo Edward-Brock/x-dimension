@@ -5,6 +5,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     authSecret: process.env.AUTH_SECRET, // 项目 Secret
     cookieDomain: process.env.COOKIE_DOMAIN, // JWT 签发者
+    cosSecretId: process.env.NUXT_COS_SECRET_ID, // Secret ID
+    cosSecretKey: process.env.NUXT_COS_SECRET_KEY, // secret Key
     public: {
       projectName: process.env.NUXT_PROJECT_NAME, // 项目简称
       projectFullName: process.env.NUXT_PROJECT_FULL_NAME, // 项目全程
@@ -12,6 +14,9 @@ export default defineNuxtConfig({
       projectRepositoryUrl: process.env.NUXT_PROJECT_REPOSITORY_URL, // 项目代码托管存储库地址
       projectLicenseType: process.env.NUXT_PROJECT_LICENSE_TYPE, // 项目许可证类型
       projectLicenseUrl: process.env.NUXT_PROJECT_LICENSE_URL, // 项目许可证地址
+      cosBucket: process.env.NUXT_COS_BUCKET, // 存储桶名称
+      cosRegion: process.env.NUXT_COS_REGION, // 所属地域
+      cosAppId: process.env.NUXT_COS_APPID, // 存储桶 ID
     },
   },
   modules: ['@nuxt/ui', '@nuxt/eslint', '@prisma/nuxt', '@sidebase/nuxt-auth'],

@@ -7,13 +7,17 @@ useHead({
 
 const links = [{
   label: '通用',
-  icon: 'i-heroicons-user-circle',
+  icon: 'i-heroicons-wrench-screwdriver',
   to: '/setting',
   exact: true,
 }, {
   label: '密码',
   icon: 'i-heroicons-lock-closed',
   to: '/setting/password',
+}, {
+  label: '头像',
+  icon: 'i-heroicons-user-circle',
+  to: '/setting/avatar',
 }]
 </script>
 
