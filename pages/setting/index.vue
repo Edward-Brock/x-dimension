@@ -35,7 +35,7 @@ const { refresh } = useAuth()
 
 // 使用 useAsyncData 获取用户初始数据
 const { data: initialData } = await useAsyncData<UserData>('user-data', () =>
-  $fetch('/api/auth/user', {
+  $fetch<UserData>('/api/auth/user', {
     headers: {
       Authorization: `Bearer ${rawToken.value}`,
     },
@@ -115,7 +115,7 @@ async function onSubmit() {
 </script>
 
 <template>
-  <u-container class="my-5">
+  <UContainer class="my-5">
     <div class="flex-1 flex flex-col pb-24">
       <UForm
         :schema="schema"
@@ -218,7 +218,7 @@ async function onSubmit() {
         </div>
       </UForm>
     </div>
-  </u-container>
+  </UContainer>
 </template>
 
 <style scoped>

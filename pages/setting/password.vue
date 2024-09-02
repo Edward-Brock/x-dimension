@@ -79,7 +79,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <u-container class="my-5">
+  <UContainer class="my-5">
     <div class="flex-1 flex flex-col pb-24">
       <UForm
         :schema="schema"
@@ -158,7 +158,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </div>
       </UForm>
     </div>
-  </u-container>
+  </UContainer>
 </template>
 
 <style scoped>
