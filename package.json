@@ -16,26 +16,26 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.22",
     "@heroicons/vue": "^2.1.5",
-    "@nuxt/eslint": "^0.5.4",
+    "@nuxt/eslint": "^0.5.6",
     "@nuxt/ui": "^2.18.4",
     "@prisma/nuxt": "^0.0.35",
-    "@sidebase/nuxt-auth": "^0.9.1",
+    "@sidebase/nuxt-auth": "^0.9.2",
     "bcrypt": "^5.1.1",
     "cos-js-sdk-v5": "^1.8.4",
     "jsonwebtoken": "^9.0.2",
-    "nuxt": "^3.13.0",
+    "nuxt": "^3.13.1",
     "qcloud-cos-sts": "^3.1.1",
     "qs": "^6.13.0",
     "vue": "latest",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@iconify-json/heroicons": "^1.1.24",
-    "@iconify-json/mdi": "^1.1.68",
-    "@prisma/client": "^5.19.0",
+    "@iconify-json/heroicons": "^1.2.0",
+    "@iconify-json/mdi": "^1.2.0",
+    "@prisma/client": "^5.19.1",
     "@types/bcrypt": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.6",
-    "prisma": "^5.19.0",
+    "prisma": "^5.19.1",
     "typescript": "^5.5.4"
   }
 }
