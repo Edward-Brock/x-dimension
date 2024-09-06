@@ -41,6 +41,15 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: '用户名或密码错误' })
   }
 
+  switch (userFromDb.status) {
+    case 'Banned':
+      throw createError({ statusCode: 400, statusMessage: '账号已封禁，请联系管理员' })
+    case 'Locked':
+      throw createError({ statusCode: 400, statusMessage: '账号已锁定，请稍后重试' })
+    case 'Inactive':
+      throw createError({ statusCode: 403, statusMessage: '用户不存在' })
+  }
+
   // 将用户名及用户全部角色整合为对象
   const user = {
     username: userFromDb.username,
@@ -61,7 +70,7 @@ export default defineEventHandler(async (event) => {
     iat: currentTime,
     ...user,
   }, SECRET, {
-    expiresIn: 30,
+    expiresIn: 60 * 10,
   })
 
   // 长期 Token

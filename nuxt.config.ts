@@ -40,9 +40,19 @@ export default defineNuxtConfig({
         signUp: { path: '/register', method: 'post' },
         getSession: { path: '/user', method: 'get' },
       },
+      session: {
+        dataType: {
+          iss: 'string',
+          sub: 'string',
+          exp: 'number',
+          username: 'string',
+          nickname: 'string',
+          avatar_url: 'string',
+          roles: 'object',
+        },
+      },
       token: {
         signInResponseTokenPointer: '/token/accessToken',
-        maxAgeInSeconds: 60 * 10,
         sameSiteAttribute: 'lax',
       },
       refresh: {
